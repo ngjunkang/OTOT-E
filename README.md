@@ -2,7 +2,7 @@
 
 CS 3219 OTOT Task E
 
-To run, issue the following command,
+Ensure that local Redis server and MongoDB are up. To run, issue the following command,
 
 ```bash
 yarn
