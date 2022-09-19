@@ -17,7 +17,7 @@ const redis = new Redis();
 mongoose
   .connect(DATABASE_URI)
   .then(() => {
-    console.log("DB connected successfully");
+    console.log("DB connected successfully " + DB_CONNECTION_STRING);
     startServer();
   })
   .catch((error) => console.log(error));
@@ -26,7 +26,13 @@ const startServer = () => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
 
-  app.get("/", (req, res) => res.send("Hello, welcome to OTOT Task E!"));
+  app.get("/", (req, res) =>
+    res.send(
+      "Hello, welcome to OTOT Task E! Link to set Redis is http://localhost:" +
+        PORT +
+        "/students"
+    )
+  );
 
   app.get("/students", controller.index({ redis }));
 
